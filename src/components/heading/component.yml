@@ -1,0 +1,17 @@
+name: Heading
+machineName: heading
+status: true
+required:
+  - text
+props:
+  properties:
+    text:
+      title: Text
+      type: string
+      examples:
+        - Believe it or not, this copy was written by a human.
+        - Our team is here to help your AI agents look good.
+        - Our pricing is based on the value you get.
+slots: []
+importedJsComponents: []
+dataDependencies: []

@@ -1,0 +1,27 @@
+name: Paragraph
+machineName: paragraph
+status: true
+required:
+  - text
+props:
+  properties:
+    text:
+      title: Text
+      type: string
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - >-
+          Something magical happens when humans make things. Depth, nuance,
+          creativity, and original ideas appear in the work.
+        - >-
+          We pretend to hallucinate as much as necessary to ease the transition
+          to working with humans again, but we never let that slip into our
+          final deliverables.
+        - >-
+          If you're confused about what that means, just replace the word
+          <em>value</em> with <em>tokens</em>. It doesn't make it less
+          confusing, but we all came to accept it, didn't we?
+slots: []
+importedJsComponents: []
+dataDependencies: []
