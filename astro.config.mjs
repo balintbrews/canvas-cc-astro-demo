@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import path from "path";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
@@ -6,6 +6,16 @@ import tailwindcss from "@tailwindcss/vite";
 const DIR = new URL("./", import.meta.url).pathname;
 
 export default defineConfig({
+  env: {
+    schema: {
+      CANVAS_SITE_URL: envField.string({ context: "server", access: "public" }),
+      CANVAS_PAGE_UUID: envField.string({
+        context: "server",
+        access: "public",
+      }),
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
     // @see https://github.com/balintbrews/canvas-cc-starter/blob/main/vite.config.js
@@ -13,11 +23,14 @@ export default defineConfig({
       alias: [
         {
           find: "@/lib/utils",
-          replacement: path.resolve(DIR, "./src/lib/utils.js"),
+          replacement: path.resolve(DIR, "./src/lib/drupal-canvas/utils.js"),
         },
         {
           find: "@/lib/FormattedText",
-          replacement: path.resolve(DIR, "./src/lib/FormattedText.jsx"),
+          replacement: path.resolve(
+            DIR,
+            "./src/lib/drupal-canvas/FormattedText.jsx",
+          ),
         },
         {
           // Make sure we don't resolve nested folder structures under

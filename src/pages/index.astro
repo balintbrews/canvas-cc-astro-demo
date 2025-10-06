@@ -1,39 +1,28 @@
 ---
-import { createElement } from "react";
+import { JsonApiClient } from "@drupal-api-client/json-api-client";
+import { Jsona } from "jsona";
+
+import { CANVAS_SITE_URL, CANVAS_PAGE_UUID } from "astro:env/server";
+
 import Layout from "../layouts/layout.astro";
+import Components from "../lib/Components.jsx";
 
-// Create component map for rendering.
-// @todo This should be automated in some way.
-import Card from "@/components/card";
-import Footer from "@/components/footer";
-import Grid from "@/components/grid";
-import Header from "@/components/header";
-import Heading from "@/components/heading";
-import Hero from "@/components/hero";
-import Logo from "@/components/logo";
-import Navigation from "@/components/navigation";
-import Paragraph from "@/components/paragraph";
-import PricingTable from "@/components/pricing-table";
-import Section from "@/components/section";
+import type { EntityTypeWithBundle } from "@drupal-api-client/json-api-client";
+import type { CanvasPageResponse } from "../types/drupal-canvas";
 
-const components = {
-  "js.card": Card,
-  "js.footer": Footer,
-  "js.grid": Grid,
-  "js.header": Header,
-  "js.heading": Heading,
-  "js.hero": Hero,
-  "js.logo": Logo,
-  "js.navigation": Navigation,
-  "js.paragraph": Paragraph,
-  "js.pricing-table": PricingTable,
-  "js.section": Section,
-};
+const client = new JsonApiClient(CANVAS_SITE_URL, {
+  serializer: new Jsona(),
+  debug: true,
+});
+
+const response = (await client.getResource(
+  "canvas_page--canvas_page" as EntityTypeWithBundle,
+  CANVAS_PAGE_UUID,
+)) as CanvasPageResponse;
+
+const { title, components } = response;
 ---
 
-<Layout title="canvas-cc-astro-demo">
-  <Section
-    content={(() => createElement(Heading, { text: "Hello, World!" }))()}
-    darkVariant={true}
-  />
+<Layout title={`canvas-cc-astro-demo: ${title}`}>
+  <Components client:load data={components} />
 </Layout>

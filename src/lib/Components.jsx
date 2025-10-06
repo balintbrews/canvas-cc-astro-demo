@@ -1,0 +1,34 @@
+import { Renderer } from "./Renderer";
+
+// Create component map for rendering.
+// @todo This should be automated in some way.
+
+import Card from "@/components/card";
+import Footer from "@/components/footer";
+import Grid from "@/components/grid";
+import Header from "@/components/header";
+import Heading from "@/components/heading";
+import Hero from "@/components/hero";
+import Logo from "@/components/logo";
+import Navigation from "@/components/navigation";
+import Paragraph from "@/components/paragraph";
+import PricingTable from "@/components/pricing-table";
+import Section from "@/components/section";
+
+const componentMap = {
+  "js.card": Card,
+  "js.footer": Footer,
+  "js.grid": Grid,
+  "js.header": Header,
+  "js.heading": Heading,
+  "js.hero": Hero,
+  "js.logo": Logo,
+  "js.navigation": Navigation,
+  "js.paragraph": Paragraph,
+  "js.pricing-table": PricingTable,
+  "js.section": Section,
+};
+
+export default function Components({ data }) {
+  return <Renderer {...{ data, componentMap }} />;
+}

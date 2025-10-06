@@ -6,8 +6,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["./src/components/*"],
-      "@/lib/utils": ["./src/lib/utils.js"],
-      "@/lib/FormattedText": ["./src/lib/FormattedText.jsx"]
+      "@/lib/utils": ["src/lib/drupal-canvas/utils.js"],
+      "@/lib/FormattedText": ["src/lib/drupal-canvas/FormattedText.jsx"]
     }
   }
 }
