@@ -1,6 +1,6 @@
 // SVG source: https://www.svgrepo.com/svg/200008/human-resources-search.
 
-import { cn } from "@/lib/utils";
+import { cn } from "drupal-canvas";
 
 const Logo = ({ linkToFrontPage = true, className }) => {
   const Element = linkToFrontPage ? "a" : "div";
@@ -60,7 +60,7 @@ const Logo = ({ linkToFrontPage = true, className }) => {
           />
         </g>
       </svg>
-      <span className="text-flamingo shrink-0 text-lg uppercase tracking-widest">
+      <span className="shrink-0 text-lg tracking-widest text-flamingo uppercase">
         Humanify
       </span>
     </Element>
